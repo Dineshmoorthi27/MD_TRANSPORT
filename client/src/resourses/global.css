@@ -1,0 +1,82 @@
+/*heights and widths */
+/* global.css */
+
+.h-screen {
+    height: 100vh;
+}
+
+.w-400 {
+    width: 400px;
+}
+
+/* inputs*/
+
+input {
+    height: 40px;
+    width: 100px;
+    border: 2px solid gray;
+    padding: auto;
+}
+
+/* card*/
+.card {
+    border: 2px solid gray;
+    box-shadow: 0 0 2px gray;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Buttons*/
+.primary-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* anchor */
+a {
+    text-decoration: none !important;
+    color: var(--secondary);
+}
+
+i{
+    cursor: pointer;
+    font-size: 25px;
+}
+h1{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* loader/spinner*/
+.spinner-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.507);
+    z-index: 10000;
+}
+
+.spinner-border {
+    color: white;
+    height: 90px;
+    width: 90px;
+}
+
