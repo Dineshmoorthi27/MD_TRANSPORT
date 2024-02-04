@@ -23,7 +23,7 @@ const busSchema = new mongoose.Schema({
         required: true,
     },
     DOJ: {
-        type: Date,
+        type: String,
         required: true,
     },
     departure: {

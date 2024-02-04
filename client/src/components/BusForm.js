@@ -3,27 +3,38 @@ import { Form, Modal, Row, Col, Select, message } from 'antd';
 import { axiosInstance } from "../helpers/axiosInstance";
 import { useDispatch } from 'react-redux';
 import { showloading, hideloading } from "../redux/alertsSlice";
-import  moment from "moment";
 const { Option } = Select;
 
-function BusForm({ showBusForm, setShowBusForm, type = 'add' }) {
+function BusForm({
+    showBusForm,
+    setShowBusForm,
+    type = 'add',
+    getData,
+    selectedBus,
+    setSelectedBus,
+}) {
     const dispatch = useDispatch();
     const onFinish = async (values) => {
         try {
             dispatch(showloading())
             let response = null
             if (type === 'add') {
-                response = await axiosInstance.post('/api/buses/add-bus', {
-                    ...values,
-                    DOJ : moment(values.DOJ).format("DD-MM-YYYY"),
-                });
+                response = await axiosInstance.post('/api/buses/add-bus', values);
             } else {
+                response = await axiosInstance.post('/api/buses/update-bus', {
+                    ...values,
+                    _id: selectedBus._id,
+                })
             }
             if (response.data.success) {
                 message.success(response.data.message);
             } else {
                 message.error(response.data.message);
             }
+            getData();
+            setShowBusForm(false);
+            setSelectedBus(null);
+
             dispatch(hideloading());
         }
 
@@ -33,8 +44,15 @@ function BusForm({ showBusForm, setShowBusForm, type = 'add' }) {
         }
     }
     return (
-        <Modal width={800} title='Add Bus' open={showBusForm} onCancel={() => setShowBusForm(false)} footer={false}>
-            <Form layout="vertical" onFinish={onFinish}>
+        <Modal width={800}
+            title={`${type === 'add' ? 'Add a Bus' : 'Edit Bus'} Information`}
+            open={showBusForm}
+            onCancel={() => {
+                setSelectedBus(null);
+                setShowBusForm(false);
+            }}
+            footer={false}>
+            <Form layout="vertical" onFinish={onFinish} initialValues={selectedBus}>
                 <Row gutter={[10, 10]}>
                     <Col lg={24} xs={24}>
                         <Form.Item label="Bus Name" name="name">
