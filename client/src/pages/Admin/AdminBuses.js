@@ -30,6 +30,25 @@ function AdminBuses() {
         }
     };
 
+    // delete buses
+    const deleteBus = async (id) => {
+        try {
+            dispatch(showloading());
+            const response = await axiosInstance.post("/api/buses/delete-bus", {
+                _id: id,
+            });
+            dispatch(hideloading());
+            if (response.data.success) {
+                message.success(response.data.message);
+            } else {
+                message.error(response.data.message);
+            }
+        } catch (error) {
+            dispatch(hideloading());
+            message.error(error.message);
+        }
+    };
+
 
     const columns = [
         {
@@ -66,7 +85,10 @@ function AdminBuses() {
                         setShowBusForm(true);
                     }
                     }></i>
-                    <i class="ri-delete-bin-fill"></i>
+                    <i class="ri-delete-bin-fill" onClick={() => {
+                        deleteBus(record._id);
+                    }
+                    }></i>
                 </div>
             )
         },
@@ -95,8 +117,9 @@ function AdminBuses() {
                     setShowBusForm={setShowBusForm}
                     type={selectedBus ? "edit" : "add"}
                     selectedBus={selectedBus}
-                    getData={getBuses}
                     setSelectedBus={getBuses}
+                    getData={getBuses}
+
 
                 />}
         </div>
