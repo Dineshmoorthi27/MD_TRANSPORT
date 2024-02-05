@@ -80,3 +80,10 @@ h1{
     width: 90px;
 }
 
+.leftImage-login{
+    padding-right: 100px;
+}
+.rightImage-login{
+    padding-left: 100px;
+}
+

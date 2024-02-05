@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Input, message } from 'antd';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import leftImg from './left_img.png';
+import rightImg from './right_img.png';
 function Register() {
   const onFinish = async (values) => {
     try {
@@ -18,6 +20,9 @@ function Register() {
   };
   return (
     <div className='h-screen d-flex justify-content-center align-items-center'>
+      <div className='leftImage-login'>
+        <img src={leftImg} alt="logo" />
+      </div>
       <div className='w-400 card p-4'>
         <Form layout='vertical' onFinish={onFinish}>
           <h2>User Registration</h2>
@@ -36,6 +41,9 @@ function Register() {
             <button className="secondary-btn" type='submit'>Register</button>
           </div>
         </Form>
+      </div>
+      <div className='rightImage-login'>
+        <img src={rightImg} alt="right_img"></img>
       </div>
     </div>
   );
