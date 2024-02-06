@@ -22,6 +22,7 @@ input {
 .card {
     border: 2px solid gray;
     box-shadow: 0 0 2px gray;
+
 }
 
 h2 {
@@ -29,6 +30,24 @@ h2 {
     margin-bottom: 40px;
 }
 
+/*text size */
+.text-2xl{
+    font-size: 30px;
+}
+.text-xl{
+    font-size: 25px;
+}
+.text-lg{
+    font-size: 20px;
+}
+.text-md{
+    font-size: 18px;
+}
+
+.underline{
+    text-decoration: underline;
+    cursor: pointer;
+}
 /* Buttons*/
 .primary-btn {
     background-color: var(--primary);
@@ -52,14 +71,17 @@ a {
     color: var(--secondary);
 }
 
-i{
+i {
     cursor: pointer;
     font-size: 25px;
 }
-h1{
+
+h1,
+p {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
+
 /* loader/spinner*/
 .spinner-parent {
     position: absolute;
@@ -70,7 +92,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.507);
+    background-color: rgba(0, 0, 0, 0.507);
     z-index: 10000;
 }
 
@@ -80,10 +102,10 @@ h1{
     width: 90px;
 }
 
-.leftImage-login{
+.leftImage-login {
     padding-right: 100px;
 }
-.rightImage-login{
+
+.rightImage-login {
     padding-left: 100px;
 }
-
