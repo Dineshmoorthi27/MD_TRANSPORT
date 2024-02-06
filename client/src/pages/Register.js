@@ -1,15 +1,17 @@
 import React from 'react';
 import { Form, Input, message } from 'antd';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import leftImg from './left_img.png';
 import rightImg from './right_img.png';
 function Register() {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
       const response = await axios.post("/api/users/register", values);
       if (response.data.success) {
         message.success(response.data.message);
+        navigate('/login');
       }
       else {
         message.error(response.data.message);
